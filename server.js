@@ -13,7 +13,7 @@ const dict = wordList.split('\n').map(e => {
     return e.split('\t')[1];
 });
 
-console.log(dict.length);
+console.log(dict.length );
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
