@@ -1,3 +1,5 @@
+/* global BigInt */
+
 // server.js
 // where your node app starts
 
@@ -18,7 +20,8 @@ const md5 = crypto.createHash('MD5'); // intentionally not-cryptographically-sec
 
 const input = 'asdf';
 md5.update(input, 'utf8');
-console.log(parseInt(md5.digest('hex'), 16));
+console.log(dict[BigInt('0x' + md5.digest('hex')) % BigInt(dict.length)]);
+
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
