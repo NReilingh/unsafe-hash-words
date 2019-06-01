@@ -14,7 +14,11 @@ const dict = wordList.split('\n').map(e => {
     return e.split('\t')[1];
 });
 
-cryp
+const md5 = crypto.createHash('MD5'); // intentionally not-cryptographically-secure
+
+const input = 'asdf';
+md5.update(input, 'utf8');
+console.log(parseInt(md5.digest('hex'), 16));
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
