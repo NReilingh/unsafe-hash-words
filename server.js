@@ -10,10 +10,10 @@ const fs = require('fs');
 const wordList = fs.readFileSync('./eff_short_wordlist_1.txt', 'utf8');
 
 const dict = wordList.split('\n').map(e => {
-  return e.split('\t')
+    return e.split('\t')[1];
 });
 
-console.log(dict);
+console.log(dict.length);
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
