@@ -24,6 +24,7 @@ console.log('nounDict.length', nounDict.length)
 
 const unsafeHashWord = require('./unsafeHashWord.js')(dict);
 const unsafeHashThing = require('./unsafeHashThing.js')(adjDict, nounDict);
+const unsafeHashNoun = require('./unsafeHashWord.js')(nounDict);
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -44,6 +45,12 @@ app.get('/unsafehashword/:value', function(req, res) {
 
 app.get('/unsafehashthing/:value', function(req, res) {
   const result = unsafeHashThing(req.params.value);
+  console.log(req.params.value, '->', result);
+  res.send(result);
+});
+
+app.get('/unsafehashnoun/:value', function(req, res) {
+  const result = unsafeHashNoun(req.params.value);
   console.log(req.params.value, '->', result);
   res.send(result);
 });
