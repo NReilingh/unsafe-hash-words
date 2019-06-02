@@ -1,4 +1,3 @@
-/* global BigInt */
 
 // server.js
 // where your node app starts
@@ -8,7 +7,6 @@ const express = require('express');
 const app = express();
 
 const fs = require('fs');
-const crypto = require('crypto');
 
 const wordList = fs.readFileSync('./eff_short_wordlist_1.txt', 'utf8');
 
@@ -16,12 +14,7 @@ const dict = wordList.split('\n').map(e => {
     return e.split('\t')[1];
 });
 
-const md5 = crypto.createHash('MD5'); // intentionally not-cryptographically-secure
-
-const input = 'asdf';
-md5.update(input, 'utf8');
-console.log(dict[BigInt('0x' + md5.digest('hex')) % BigInt(dict.length)]);
-
+const unsafeHashWord = require('./unsafeHashWord.js')(dict);
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -30,8 +23,13 @@ console.log(dict[BigInt('0x' + md5.digest('hex')) % BigInt(dict.length)]);
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/unsafehashword/:value', function(req, res) {
+  console.log(req.params.value);
+  res.send(unsafeHashWord(req.params.value));
 });
 
 // listen for requests :)
