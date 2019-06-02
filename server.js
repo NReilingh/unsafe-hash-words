@@ -31,13 +31,15 @@ app.get('/', function(req, res) {
 });
 
 app.get('/unsafehashword/:value', function(req, res) {
-  console.log(req.params.value);
-  res.send(unsafeHashWord(req.params.value));
+  const result = unsafeHashWord(req.params.value);
+  console.log(req.params.value, '->', result);
+  res.send(result);
 });
 
 app.get('/unsafehashthing/:value', function(req, res) {
-  console.log(req.params.value);
-  res.send(unsafeHashThing(req.params.value));
+  const result = unsafeHashThing(req.params.value);
+  console.log(req.params.value, '->', result);
+  res.send(result);
 });
 
 // listen for requests :)
