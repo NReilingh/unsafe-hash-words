@@ -1283,7 +1283,6 @@
 6645	yeast
 6646	yelp
 6651	yield
-6652	yo-yo
 6653	yodel
 6654	yoga
 6655	yoyo
