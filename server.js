@@ -49,6 +49,13 @@ app.get('/unsafehashthing/:value', function(req, res) {
   res.send(result);
 });
 
+app.get('/unsafehashhost/:value/:prefix', function(req, res) {
+  const remainder = 15 - req.params.prefix.length
+  const result = unsafeHashThing(req.params.value, remainder);
+  console.log(req.params.value, '->', result);
+  res.send(result);
+});
+
 app.get('/unsafehashnoun/:value', function(req, res) {
   const result = unsafeHashNoun(req.params.value);
   console.log(req.params.value, '->', result);

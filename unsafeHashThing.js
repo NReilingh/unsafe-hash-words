@@ -3,7 +3,16 @@
 const crypto = require('crypto');
 
 module.exports = function (adjDict, nounDict) {
-  return function unsafeHashWord(stringData) {
+  return function unsafeHashWord(stringData, length) {
+    if (length !== undefined) {
+      const adjlen = Math.ceil(length / 2);
+      const nounlen = Math.floor(length / 2);
+      
+      // Yup, these are function scope vars.
+      // This overrides our closure values with the same name for the duration of this function run.
+      var adjDict = adjDict.filter(e => { return e.length <= adjlen; });
+      var nounDict = nounDict.filter(e => { return e.length <= nounlen; });
+    }
     const md5 = crypto.createHash('MD5'); // intentionally not-cryptographically-secure
 
     md5.update(stringData, 'utf8');
