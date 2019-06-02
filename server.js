@@ -16,9 +16,11 @@ const dict = wordList.split('\n').map(e => {
     return e.split('\t')[1];
 });
 
-const adjDict = dict.filter(e => {
-  adj
-});
+const adjDict = dict.filter(e => { return adjList.includes(e); });
+const nounDict = dict.filter(e => { return nounList.includes(e); });
+
+console.log('adjDict.length', adjDict.length);
+console.log('nounDict.length', nounDict.length)
 
 const unsafeHashWord = require('./unsafeHashWord.js')(dict);
 const unsafeHashThing = require('./unsafeHashThing.js')(adjDict, nounDict);
