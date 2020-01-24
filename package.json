@@ -10,9 +10,6 @@
     "test": "jest",
     "prepare": "npm run build"
   },
-  "dependencies": {
-    "express": "^4.16.4"
-  },
   "engines": {
     "node": "*"
   },
