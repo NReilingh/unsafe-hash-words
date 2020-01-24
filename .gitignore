@@ -1,4 +1,4 @@
-/dist
-/build/*
-!/build/.gitkeep
+/lib
+/assets/*
+!/assets/.gitkeep
 node_modules

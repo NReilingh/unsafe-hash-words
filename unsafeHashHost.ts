@@ -1,7 +1,7 @@
 import * as crypto from 'crypto';
 
-import * as adjDict from './build/adjDict.json';
-import * as nounDict from './build/nounDict.json';
+import * as adjDict from './assets/adjDict.json';
+import * as nounDict from './assets/nounDict.json';
 
 export function unsafeHashHost(stringData: string, length: number | undefined) {
   const md5 = crypto.createHash('MD5'); // intentionally not-cryptographically-secure

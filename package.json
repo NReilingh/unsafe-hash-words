@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "author": "Nick Reilingh",
   "description": "Returns a \"random\" set of words from textual input data.",
-  "main": "dist/unsafeHashHost.js",
-  "types": "dist/unsafeHashHost.d.ts",
+  "main": "lib/unsafeHashHost.js",
+  "types": "lib/unsafeHashHost.d.ts",
   "scripts": {
     "build": "node build.js && tsc",
     "test": "jest",
@@ -14,7 +14,7 @@
     "express": "^4.16.4"
   },
   "engines": {
-    "node": "10"
+    "node": "*"
   },
   "repository": {
     "url": "https://github.com/NReilingh/unsafe-hash-words"
@@ -28,6 +28,6 @@
     "typescript": "^3.7.5"
   },
   "files": [
-    "dist/**/*"
+    "lib/**/*"
   ]
 }
