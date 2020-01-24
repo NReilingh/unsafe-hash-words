@@ -13,14 +13,18 @@ export function unsafeHashHost(stringData: string, length: number | undefined) {
   const front = '0x' + hash.substring(1,16);
   const back = '0x' + hash.substring(16);
 
+  function dictModulo(dict: string[], hexValue: string) {
+    return dict[Number(BigInt(hexValue) % BigInt(dict.length))];
+  }
+
   if (length !== undefined) {
     const adjlen = Math.ceil(length / 2);
     const nounlen = Math.floor(length / 2);
 
     const iAdjDict = adjDict.filter(e => { return e.length <= adjlen; });
     const iNounDict = nounDict.filter(e => { return e.length <= nounlen; });
-    return iAdjDict[Number(BigInt(front) % BigInt(iAdjDict.length))] + iNounDict[Number(BigInt(back) % BigInt(iNounDict.length))];
+    return dictModulo(iAdjDict, front) + dictModulo(iNounDict, back);
+  } else {
+    return dictModulo(adjDict, front) + dictModulo(nounDict, back);
   }
-
-  return adjDict[Number(BigInt(front) % BigInt(adjDict.length))] + nounDict[Number(BigInt(back) % BigInt(nounDict.length))];
 };
