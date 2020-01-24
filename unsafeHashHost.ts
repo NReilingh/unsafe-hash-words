@@ -1,9 +1,9 @@
-const crypto = require('crypto');
+import * as crypto from 'crypto';
 
-const adjDict = require('./adjDict.json');
-const nounDict = require('./nounDict.json');
+import * as adjDict from './build/adjDict.json';
+import * as nounDict from './build/nounDict.json';
 
-module.exports = function unsafeHashHost(stringData, length) {
+export function unsafeHashHost(stringData: string, length: number | undefined) {
   const md5 = crypto.createHash('MD5'); // intentionally not-cryptographically-secure
 
   md5.update(stringData, 'utf8');
@@ -19,8 +19,8 @@ module.exports = function unsafeHashHost(stringData, length) {
 
     const iAdjDict = adjDict.filter(e => { return e.length <= adjlen; });
     const iNounDict = nounDict.filter(e => { return e.length <= nounlen; });
-    return iAdjDict[BigInt(front) % BigInt(iAdjDict.length)] + iNounDict[BigInt(back) % BigInt(iNounDict.length)];
+    return iAdjDict[Number(BigInt(front) % BigInt(iAdjDict.length))] + iNounDict[Number(BigInt(back) % BigInt(iNounDict.length))];
   }
 
-  return adjDict[BigInt(front) % BigInt(adjDict.length)] + nounDict[BigInt(back) % BigInt(nounDict.length)];
+  return adjDict[Number(BigInt(front) % BigInt(adjDict.length))] + nounDict[Number(BigInt(back) % BigInt(nounDict.length))];
 };
