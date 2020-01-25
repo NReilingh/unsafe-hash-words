@@ -1,6 +1,6 @@
 {
   "name": "unsafe-hash-words",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Nick Reilingh",
   "description": "Returns a \"random\" set of words from textual input data.",
   "main": "lib/unsafeHashHost.js",
